@@ -1,4 +1,4 @@
-import { spacing } from "@/styles/global";
+import { spacing } from "@/shared/styles/global";
 import { StyleSheet, View } from "react-native";
 import { MacroCard } from "./macro-card.component";
 

@@ -1,7 +1,7 @@
 import { Stack } from "expo-router";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { Toaster } from "sonner-native";
-// import { colors } from "@/styles/global";
+// import { colors } from "@/shared/styles/global";
 
 export default function RootLayout() {
   return (

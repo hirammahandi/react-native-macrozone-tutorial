@@ -1,14 +1,5 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
-
-export type Meal = {
-  id: string;
-  name: string;
-  calories: number;
-  protein: number;
-  carbs: number;
-  fat: number;
-  createdAt: string;
-};
+import type { Meal } from "../types/meal.types";
 
 const MEALS_KEY = "meals";
 

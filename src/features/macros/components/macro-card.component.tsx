@@ -1,4 +1,4 @@
-import { colors, spacing } from "@/styles/global";
+import { colors, spacing } from "@/shared/styles/global";
 import { FC } from "react";
 import { StyleSheet, Text, View } from "react-native";
 

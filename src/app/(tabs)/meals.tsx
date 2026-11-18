@@ -1,5 +1,5 @@
 import { ScreensRoutes } from "@/shared/routes/screens.routes";
-import { colors, globalStyles } from "@/styles/global";
+import { colors, globalStyles } from "@/shared/styles/global";
 import { Link } from "expo-router";
 import { ScrollView, Text } from "react-native";
 

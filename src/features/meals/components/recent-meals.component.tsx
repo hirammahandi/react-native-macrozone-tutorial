@@ -1,4 +1,4 @@
-import { globalStyles } from "@/styles/global";
+import { globalStyles } from "@/shared/styles/global";
 import { Text, View } from "react-native";
 import { MealItem } from "./meal-item.component";
 

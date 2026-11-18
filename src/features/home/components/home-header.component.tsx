@@ -1,4 +1,4 @@
-import { colors, globalStyles } from "@/styles/global";
+import { colors, globalStyles } from "@/shared/styles/global";
 import { StyleSheet, Text, View } from "react-native";
 
 export default function HomeHeader() {

@@ -1,4 +1,4 @@
-import { colors, globalStyles, spacing } from "@/styles/global";
+import { colors, globalStyles, spacing } from "@/shared/styles/global";
 import { useReducer, useState } from "react";
 import { Keyboard, KeyboardAvoidingView, Platform, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
 import { toast } from "sonner-native";

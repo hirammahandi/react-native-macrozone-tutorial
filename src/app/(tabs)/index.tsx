@@ -1,7 +1,7 @@
-import HomeHeader from "@/components/home-header.component";
-import { MacroGrid } from "@/components/macro-grid.component";
-import { RecentMeals } from "@/components/recent-meals.component";
-import { globalStyles } from "@/styles/global";
+import HomeHeader from "@/features/home/components/home-header.component";
+import { MacroGrid } from "@/features/macros/components/macro-grid.component";
+import { RecentMeals } from "@/features/meals/components/recent-meals.component";
+import { globalStyles } from "@/shared/styles/global";
 import { ScrollView } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
