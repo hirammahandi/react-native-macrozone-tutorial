@@ -1,7 +1,11 @@
+import { ScreensRoutes } from "@/shared/routes/screens.routes";
 import { colors, globalStyles, spacing } from "@/shared/styles/global";
-import { useReducer, useState } from "react";
+import * as Haptics from "expo-haptics";
+import { router } from "expo-router";
+import { useReducer } from "react";
 import { Keyboard, KeyboardAvoidingView, Platform, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
 import { toast } from "sonner-native";
+import { addMeal } from "../storage/meals.storage";
 
 const initialState = {
   name: "",
@@ -69,19 +73,18 @@ const validateMeal = ({ name, calories, protein, carbs, fat }: MealFormState) =>
 
 export const AddMealForm = () => {
   const [state, dispatch] = useReducer(mealReducer, initialState);
-  const [error, setError] = useState<string | null>(null);
 
   const { name, calories, protein, carbs, fat } = state;
 
   const handleReducer = (type: MealFieldAction) => (value: string) => {
-    setError(null);
     dispatch({ type, payload: value });
   };
 
-  const handleAddMeal = () => {
+  const handleAddMeal = async () => {
     const validationError = validateMeal(state);
     if (validationError) {
-      setError(validationError);
+      // Alert.alert("Error", validationError);
+      toast.error("Error", { description: validationError });
       return;
     }
 
@@ -93,12 +96,27 @@ export const AddMealForm = () => {
       fat: toNumber(fat || "0"),
     };
 
-    console.log(meal);
+    await addMeal(meal);
     toast.success("Meal added", { description: `${meal.name} · ${meal.calories} kcal` });
-
+    Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
     // @note Keyboard.dismiss() is used to dismiss (hide) the keyboard when the user presses the add meal button. It's a native method that is available in React Native.
     Keyboard.dismiss();
     dispatch({ type: "RESET" });
+    /*  Alert.alert(
+      "Success",
+      "Meal added successfully",
+      [
+        {
+          text: "Cancel",
+          style: "cancel",
+        },
+        { text: "OK", onPress: () => router.push(ScreensRoutes.Home) },
+      ],
+      // { onDismiss: () => router.push(ScreensRoutes.Home) },
+    ); */
+
+    // @note router.navigate() is used to navigate to the home screen. It's a function that is available in React Native.
+    router.navigate(ScreensRoutes.Home);
   };
 
   return (
@@ -148,8 +166,6 @@ export const AddMealForm = () => {
             onChangeText={handleReducer("SET_FAT")}
           />
         </View>
-
-        {error && <Text style={styles.error}>{error}</Text>}
 
         <Pressable style={({ pressed }) => [styles.button, pressed && styles.buttonPressed]} onPress={handleAddMeal}>
           <Text style={styles.buttonText}>Add Meal</Text>

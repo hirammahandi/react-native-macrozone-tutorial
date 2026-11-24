@@ -1,3 +1,4 @@
+import { DialogBlurTarget } from "@/components/ui/dialog";
 import { Stack } from "expo-router";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { Toaster } from "sonner-native";
@@ -6,9 +7,11 @@ import { Toaster } from "sonner-native";
 export default function RootLayout() {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
-      <Stack screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="(tabs)" />
-      </Stack>
+      <DialogBlurTarget>
+        <Stack screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="(tabs)" />
+        </Stack>
+      </DialogBlurTarget>
       <Toaster theme="dark" richColors />
     </GestureHandlerRootView>
   );

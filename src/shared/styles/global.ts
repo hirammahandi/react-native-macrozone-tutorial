@@ -12,6 +12,7 @@ export const colors = {
   link: "#007bff",
   cardBackground: "#16213e",
   cardText: "#a0a0b0",
+  destructive: "#ff5252",
 };
 
 /**
